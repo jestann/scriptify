@@ -26,6 +26,9 @@ class ScriptsController < ApplicationController
   # POST /scripts.json
   def create
     @script = Script.new(script_params)
+    # binding.pry
+    # sets a breakpoint in pry - stops execution and opens a pry console
+    @script.user_id = current_user.id
 
     respond_to do |format|
       if @script.save

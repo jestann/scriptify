@@ -46,9 +46,12 @@ ActiveRecord::Schema.define(version: 20170420154341) do
   create_table "scripts", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
+    t.integer  "user_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
+
+  add_index "scripts", ["user_id"], name: "index_scripts_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

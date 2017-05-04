@@ -1,5 +1,6 @@
 class ActsController < ApplicationController
   before_action :set_act, only: [:show, :edit, :update, :destroy]
+  before_action :set_script
 
   # GET /acts
   # GET /acts.json
@@ -65,6 +66,12 @@ class ActsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_act
       @act = Act.find(params[:id])
+    end
+    
+    # Set script id for this act
+    def set_script
+      @script = Script.find(params[:script_id])
+      # script_id should come from the url / route; normally params would come from a form
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
